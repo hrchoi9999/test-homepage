@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Table Cafe Kiosk</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="kiosk-shell">
+      <section class="menu-board" aria-label="카페 주문 메뉴">
+        <header class="board-header">
+          <div class="table-badge">
+            <span>TABLE</span>
+            <strong>12</strong>
+          </div>
+          <div class="title-block">
+            <p>Restaurant</p>
+            <h1>CAFE MENU</h1>
+            <span>Open daily 10:00 - 20:00</span>
+          </div>
+          <button class="call-button" type="button" id="call-staff">직원 호출</button>
+        </header>
+
+        <nav class="category-tabs" aria-label="메뉴 카테고리">
+          <button class="active" type="button" data-category="signature">대표 메뉴</button>
+          <button type="button" data-category="coffee">커피</button>
+          <button type="button" data-category="tea">티</button>
+          <button type="button" data-category="dessert">디저트</button>
+          <button type="button" data-category="dish">식사</button>
+        </nav>
+
+        <section class="category-hero" aria-live="polite">
+          <div>
+            <p id="category-kicker">Main Dish</p>
+            <h2 id="category-title">대표 메뉴</h2>
+          </div>
+          <span id="category-note">테이블에서 가장 많이 주문한 메뉴</span>
+        </section>
+
+        <section class="product-grid" id="product-grid" aria-label="메뉴 상품"></section>
+      </section>
+
+      <aside class="order-panel" aria-label="주문 내역">
+        <header class="order-header">
+          <div>
+            <p>Order Summary</p>
+            <h2>테이블 12</h2>
+          </div>
+          <button class="clear-button" id="clear-cart" type="button">비우기</button>
+        </header>
+
+        <div class="order-items" id="order-items" aria-live="polite"></div>
+
+        <div class="order-note">
+          <label for="request">요청 사항</label>
+          <textarea id="request" rows="3" placeholder="예: 얼음 적게, 컵 따로 주세요"></textarea>
+        </div>
+
+        <div class="total-box">
+          <div>
+            <span>합계</span>
+            <strong id="order-total">0원</strong>
+          </div>
+          <small id="order-count">선택한 메뉴 없음</small>
+        </div>
+
+        <button class="submit-button" type="button" id="submit-order">주문하기</button>
+        <p class="status-message" id="status-message" role="status"></p>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
