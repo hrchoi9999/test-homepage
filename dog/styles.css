@@ -150,6 +150,11 @@ h1 {
   font-weight: 900;
 }
 
+.gallery-showcase {
+  display: grid;
+  gap: 14px;
+}
+
 .slideshow {
   position: relative;
   min-height: min(64vw, 650px);
@@ -197,6 +202,34 @@ h1 {
 
 .slide-caption strong {
   text-align: right;
+}
+
+.photo-thumbs {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(58px, 1fr));
+  gap: 8px;
+}
+
+.photo-thumb {
+  aspect-ratio: 1;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.photo-thumb:hover,
+.photo-thumb.active {
+  border-color: var(--coral);
+}
+
+.photo-thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .section {
@@ -475,5 +508,9 @@ h2 {
 
   .video-card img {
     width: 72px;
+  }
+
+  .photo-thumbs {
+    grid-template-columns: repeat(4, minmax(58px, 1fr));
   }
 }
