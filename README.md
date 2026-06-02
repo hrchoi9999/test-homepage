@@ -9,15 +9,30 @@ A small static homepage for deployment testing.
 
 ## GitHub Pages Deployment
 
-Once Git and GitHub CLI are available, publish it with:
+This repository is published with GitHub Pages from the `main` branch root:
 
-```powershell
-git init
-git add index.html styles.css README.md
-git commit -m "Add test homepage"
-git branch -M main
-git remote add origin <repository-url>
-git push -u origin main
+```text
+https://hrchoi9999.github.io/test-homepage/
 ```
 
-Then enable GitHub Pages for the repository in GitHub settings.
+For future updates:
+
+```powershell
+git add .
+git commit -m "Update homepage"
+git push
+```
+
+## Cloudflare Pages Deployment
+
+This site is also published to Cloudflare Pages:
+
+```text
+https://test-homepage-a0y.pages.dev/
+```
+
+For future Cloudflare deployments:
+
+```powershell
+npx wrangler pages deploy . --project-name test-homepage --branch main --commit-dirty=true
+```
