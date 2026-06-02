@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>비숑프리제 두쫀쿠 소개</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="두쫀쿠 홈">
+        <span class="brand-dot" aria-hidden="true"></span>
+        두쫀쿠
+      </a>
+      <nav class="nav" aria-label="주요 메뉴">
+        <a href="#profile">소개</a>
+        <a href="#gallery">사진</a>
+        <a href="#videos">영상</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Bichon Frise</p>
+          <h1>몽글몽글한 매력의 비숑프리제, 두쫀쿠.</h1>
+          <p class="intro">
+            밝고 다정한 성격, 솜사탕 같은 털, 사람을 좋아하는 에너지가 가득한 작은 가족을 소개합니다.
+          </p>
+          <div class="quick-facts" aria-label="비숑프리제 특징">
+            <span>활발함</span>
+            <span>사교적</span>
+            <span>복슬복슬</span>
+          </div>
+        </div>
+
+        <section class="slideshow" id="gallery" aria-label="사진 자동 슬라이드">
+          <img id="slide-image" src="picture/KakaoTalk_20260519_180135559.png" alt="비숑프리제 두쫀쿠 사진">
+          <div class="slide-caption">
+            <span id="slide-count">1 / 4</span>
+            <strong id="slide-title">밝은 표정의 두쫀쿠</strong>
+          </div>
+        </section>
+      </section>
+
+      <section class="section profile" id="profile">
+        <div>
+          <p class="eyebrow">Profile</p>
+          <h2>비숑프리제는 이런 강아지예요.</h2>
+        </div>
+        <div class="profile-grid">
+          <article>
+            <h3>성격</h3>
+            <p>사람과 어울리는 걸 좋아하고 분위기를 환하게 만드는 애교가 많습니다.</p>
+          </article>
+          <article>
+            <h3>관리</h3>
+            <p>풍성한 털은 빗질과 미용이 필요하지만, 그만큼 귀여운 실루엣이 살아납니다.</p>
+          </article>
+          <article>
+            <h3>생활</h3>
+            <p>짧은 놀이와 산책을 꾸준히 해주면 집 안에서도 밝고 안정적으로 지냅니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section videos" id="videos">
+        <div class="section-heading">
+          <p class="eyebrow">Videos</p>
+          <h2>영상을 클릭하면 페이지 안에서 바로 재생됩니다.</h2>
+        </div>
+
+        <div class="video-layout">
+          <div class="video-player">
+            <video id="main-video" controls preload="metadata" poster="picture/두쫀쿠.png">
+              <source src="picture/두쫀쿠1.mp4" type="video/mp4">
+              브라우저가 동영상 재생을 지원하지 않습니다.
+            </video>
+          </div>
+
+          <div class="video-list" aria-label="영상 목록">
+            <button class="video-card active" type="button" data-video="picture/두쫀쿠1.mp4" data-poster="picture/두쫀쿠.png">
+              <img src="picture/두쫀쿠.png" alt="두쫀쿠 영상 미리보기">
+              <span>두쫀쿠 일상 영상</span>
+            </button>
+            <button class="video-card" type="button" data-video="picture/회사원강아지인터뷰.mp4" data-poster="picture/회사원강아지.png">
+              <img src="picture/회사원강아지.png" alt="회사원 강아지 인터뷰 영상 미리보기">
+              <span>회사원 강아지 인터뷰</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>두쫀쿠와 함께하는 비숑프리제 소개 사이트</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
