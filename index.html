@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar" aria-label="Site header">
+      <a class="brand" href="#home" aria-label="Test Homepage home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Test Homepage
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#status">Status</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Static site preview</p>
+          <h1 id="hero-title">A clean test homepage ready for GitHub Pages.</h1>
+          <p class="intro">
+            This lightweight page is built to verify publishing, styling, and responsive layout before a larger site goes live.
+          </p>
+          <div class="actions" aria-label="Primary actions">
+            <a class="button primary" href="#status">Check status</a>
+            <a class="button secondary" href="#features">View features</a>
+          </div>
+        </div>
+        <div class="hero-media" aria-label="Decorative website preview">
+          <div class="browser-frame">
+            <div class="browser-dots" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="preview-panel">
+              <div class="preview-chart" aria-hidden="true">
+                <span style="height: 42%"></span>
+                <span style="height: 78%"></span>
+                <span style="height: 56%"></span>
+                <span style="height: 88%"></span>
+                <span style="height: 64%"></span>
+              </div>
+              <div class="preview-lines" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="features" aria-labelledby="features-title">
+        <div class="section-heading">
+          <p class="eyebrow">What is included</p>
+          <h2 id="features-title">Simple pieces for a reliable smoke test.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Responsive layout</h3>
+            <p>The page adapts cleanly from mobile screens to desktop monitors.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Fast static files</h3>
+            <p>No build tool is required, so it can be published from the repository root or a docs folder.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Deployment ready</h3>
+            <p>The structure works with GitHub Pages, Netlify, Vercel, or any static hosting provider.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="status-band" id="status" aria-labelledby="status-title">
+        <div>
+          <p class="eyebrow">Current status</p>
+          <h2 id="status-title">Ready to publish once Git is available.</h2>
+        </div>
+        <ul class="status-list" aria-label="Deployment checklist">
+          <li><span aria-hidden="true"></span>Homepage files created</li>
+          <li><span aria-hidden="true"></span>Static hosting compatible</li>
+          <li><span aria-hidden="true"></span>Git push pending</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <p>Built as a test homepage for deployment verification.</p>
+    </footer>
+  </body>
+</html>
