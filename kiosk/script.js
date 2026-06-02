@@ -3,26 +3,36 @@ const categories = {
     kicker: "Main Dish",
     title: "대표 메뉴",
     note: "테이블에서 가장 많이 주문한 메뉴",
+    ingredientTitle: "대표 메뉴 재료",
+    ingredientCopy: "신선한 우유, 매장에서 추출한 에스프레소, 제철 과일과 매일 준비하는 버터 베이커리 재료를 사용합니다.",
   },
   coffee: {
     kicker: "Coffee",
     title: "커피",
     note: "원두 향과 온도 선택 가능",
+    ingredientTitle: "커피 재료",
+    ingredientCopy: "고소한 블렌드 원두, 정제수, 신선한 우유와 바닐라 시럽을 사용해 균형 잡힌 향을 냅니다.",
   },
   tea: {
     kicker: "Tea",
     title: "티",
     note: "가볍게 마시기 좋은 블렌드",
+    ingredientTitle: "티 재료",
+    ingredientCopy: "얼그레이 찻잎, 캐모마일 허브, 복숭아 베이스처럼 향이 선명한 재료를 깔끔하게 우려냅니다.",
   },
   dessert: {
     kicker: "Dessert",
     title: "디저트",
     note: "커피와 함께 좋은 달콤한 메뉴",
+    ingredientTitle: "디저트 재료",
+    ingredientCopy: "크림치즈, 마스카포네, 초콜릿, 오트와 버터를 사용해 음료와 잘 어울리는 단맛을 만듭니다.",
   },
   dish: {
     kicker: "Light Meal",
     title: "식사",
     note: "브런치와 간단한 테이블 식사",
+    ingredientTitle: "식사 메뉴 재료",
+    ingredientCopy: "신선한 채소, 닭가슴살, 베이컨, 토마토 소스와 바질을 사용해 가볍지만 든든하게 준비합니다.",
   },
 };
 
@@ -155,6 +165,8 @@ const categoryButtons = document.querySelectorAll(".category-tabs button");
 const categoryKicker = document.querySelector("#category-kicker");
 const categoryTitle = document.querySelector("#category-title");
 const categoryNote = document.querySelector("#category-note");
+const ingredientTitle = document.querySelector("#ingredient-title");
+const ingredientCopy = document.querySelector("#ingredient-copy");
 const orderItems = document.querySelector("#order-items");
 const orderTotal = document.querySelector("#order-total");
 const orderCount = document.querySelector("#order-count");
@@ -169,7 +181,9 @@ function renderProducts() {
   const filtered = products.filter((product) => product.category === activeCategory);
   productGrid.innerHTML = filtered
     .map(
-      (product) => `
+      (product) => {
+        const quantity = cart.get(product.id)?.quantity ?? 0;
+        return `
         <article class="product-card">
           <div class="product-top">
             <h3>${product.name}</h3>
@@ -178,12 +192,22 @@ function renderProducts() {
           <p>${product.description}</p>
           <div>
             <div class="tag-row">${product.tags.map((tag) => `<span>${tag}</span>`).join("")}</div>
-            <button class="add-button" type="button" data-add="${product.id}">담기</button>
+            <div class="menu-quantity" aria-label="${product.name} 수량 선택">
+              <button type="button" data-product-decrease="${product.id}">-</button>
+              <output>${quantity}</output>
+              <button type="button" data-product-increase="${product.id}">+</button>
+            </div>
           </div>
         </article>
-      `
+      `;
+      }
     )
     .join("");
+}
+
+function syncProductsAndCart() {
+  renderProducts();
+  renderCart();
 }
 
 function renderCart() {
@@ -231,19 +255,23 @@ function addToCart(productId) {
     quantity: existing ? existing.quantity + 1 : 1,
   });
   statusMessage.textContent = `${product.name} 담김`;
-  renderCart();
+  syncProductsAndCart();
 }
 
 function updateQuantity(productId, delta) {
   const existing = cart.get(productId);
-  if (!existing) return;
+  if (!existing && delta <= 0) return;
+  if (!existing) {
+    addToCart(productId);
+    return;
+  }
   const nextQuantity = existing.quantity + delta;
   if (nextQuantity <= 0) {
     cart.delete(productId);
   } else {
     cart.set(productId, { ...existing, quantity: nextQuantity });
   }
-  renderCart();
+  syncProductsAndCart();
 }
 
 categoryButtons.forEach((button) => {
@@ -254,14 +282,18 @@ categoryButtons.forEach((button) => {
     categoryKicker.textContent = categories[activeCategory].kicker;
     categoryTitle.textContent = categories[activeCategory].title;
     categoryNote.textContent = categories[activeCategory].note;
+    ingredientTitle.textContent = categories[activeCategory].ingredientTitle;
+    ingredientCopy.textContent = categories[activeCategory].ingredientCopy;
     renderProducts();
   });
 });
 
 productGrid.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-add]");
-  if (!button) return;
-  addToCart(button.dataset.add);
+  const increase = event.target.closest("[data-product-increase]");
+  const decrease = event.target.closest("[data-product-decrease]");
+
+  if (increase) updateQuantity(increase.dataset.productIncrease, 1);
+  if (decrease) updateQuantity(decrease.dataset.productDecrease, -1);
 });
 
 orderItems.addEventListener("click", (event) => {
@@ -273,14 +305,14 @@ orderItems.addEventListener("click", (event) => {
   if (decrease) updateQuantity(decrease.dataset.decrease, -1);
   if (remove) {
     cart.delete(remove.dataset.remove);
-    renderCart();
+    syncProductsAndCart();
   }
 });
 
 document.querySelector("#clear-cart").addEventListener("click", () => {
   cart.clear();
   statusMessage.textContent = "주문 내역을 비웠습니다.";
-  renderCart();
+  syncProductsAndCart();
 });
 
 document.querySelector("#call-staff").addEventListener("click", () => {
@@ -294,7 +326,7 @@ document.querySelector("#submit-order").addEventListener("click", () => {
   }
   statusMessage.textContent = "주문이 접수되었습니다.";
   cart.clear();
-  renderCart();
+  syncProductsAndCart();
 });
 
 renderProducts();

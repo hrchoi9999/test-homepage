@@ -77,7 +77,8 @@ button {
 .board-header,
 .category-tabs,
 .category-hero,
-.product-grid {
+.product-grid,
+.ingredient-note {
   position: relative;
   z-index: 1;
 }
@@ -258,17 +259,69 @@ button {
   font-weight: 900;
 }
 
-.add-button {
+.menu-quantity {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  align-items: center;
   min-height: 42px;
-  border: 0;
+  border: 1px solid var(--line);
   border-radius: 8px;
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.menu-quantity button {
+  height: 42px;
+  border: 0;
   background: var(--ink);
   color: #ffffff;
+  font-size: 1.2rem;
   font-weight: 900;
 }
 
-.add-button:hover {
+.menu-quantity button:hover {
   background: var(--rose);
+}
+
+.menu-quantity output {
+  text-align: center;
+  color: var(--gold-dark);
+  font-weight: 900;
+}
+
+.ingredient-note {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  margin-top: 18px;
+  padding: 18px 22px;
+  border: 1px solid rgba(165, 132, 78, 0.32);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.ingredient-note p {
+  margin: 0;
+}
+
+.ingredient-note > div p {
+  color: var(--gold-dark);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.ingredient-note h2 {
+  margin: 2px 0 0;
+  font-size: 1.35rem;
+}
+
+.ingredient-note > p {
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.55;
 }
 
 .order-panel {
@@ -490,6 +543,10 @@ button {
 
   .category-hero span {
     text-align: left;
+  }
+
+  .ingredient-note {
+    grid-template-columns: 1fr;
   }
 }
 
