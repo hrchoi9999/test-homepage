@@ -1,7 +1,7 @@
 const slides = [
   {
     src: "picture/KakaoTalk_20260519_180135559.png",
-    title: "밝은 표정의 두쫀쿠",
+    title: "밝은 표정의 비숑 뚜기",
   },
   {
     src: "picture/KakaoTalk_20260519_180140168.png",
@@ -9,7 +9,7 @@ const slides = [
   },
   {
     src: "picture/두쫀쿠.png",
-    title: "두쫀쿠의 귀여운 순간",
+    title: "비숑 뚜기의 귀여운 순간",
   },
   {
     src: "picture/회사원강아지.png",
